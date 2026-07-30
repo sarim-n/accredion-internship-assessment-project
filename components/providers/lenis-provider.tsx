@@ -3,6 +3,14 @@
 import { useEffect } from 'react';
 import Lenis from 'lenis';
 
+// Expose the Lenis instance globally so any component can call
+// window.__lenis.scrollTo() for programmatic smooth-scroll navigation.
+declare global {
+  interface Window {
+    __lenis?: Lenis;
+  }
+}
+
 export function LenisProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     const lenis = new Lenis({
@@ -12,6 +20,9 @@ export function LenisProvider({ children }: { children: React.ReactNode }) {
       touchMultiplier: 2,
       infinite: false,
     });
+
+    // Attach to window for cross-component access (navbar scroll-to)
+    window.__lenis = lenis;
 
     // `running` flag stops the recursive RAF chain on cleanup or when tab is hidden.
     let running = true;
@@ -50,6 +61,7 @@ export function LenisProvider({ children }: { children: React.ReactNode }) {
     return () => {
       stopLoop();
       document.removeEventListener('visibilitychange', handleVisibilityChange);
+      delete window.__lenis;
       lenis.destroy();
     };
   }, []);
