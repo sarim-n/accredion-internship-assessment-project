@@ -5,7 +5,7 @@ import { MonitorCheck, MonitorX, GraduationCap, Briefcase } from 'lucide-react';
 
 export const WhoShouldJoinSection = () => {
   return (
-    <section className="py-8 sm:py-12 bg-white border-b border-slate-200">
+    <section id="who-should-join" className="py-8 sm:py-12 bg-white border-b border-slate-200">
       <div className="max-w-[1240px] mx-auto px-4 sm:px-6">
         {/* Main Solid Blue Container */}
         <div className="bg-[#1D61E7] rounded-3xl p-6 sm:p-8 lg:p-10 text-white shadow-lg shadow-blue-600/15 relative overflow-hidden">

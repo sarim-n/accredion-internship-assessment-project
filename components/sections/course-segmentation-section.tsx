@@ -27,7 +27,7 @@ const SEGMENTS = [
 
 export const CourseSegmentationSection = () => {
   return (
-    <section className="py-14 sm:py-20 bg-white border-b border-slate-100">
+    <section id="course-segmentation" className="py-14 sm:py-20 bg-white border-b border-slate-100">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-10">
         {/* Header */}
         <div className="space-y-2">

@@ -30,7 +30,7 @@ export const DomainExpertiseSection: React.FC = () => {
   const seventhCard = DOMAIN_EXPERTISE_CARDS[6];
 
   return (
-    <section className="py-10 sm:py-14 bg-white border-b border-slate-200">
+    <section id="domain-expertise" className="py-10 sm:py-14 bg-white border-b border-slate-200">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 text-center space-y-8">
         {/* Header */}
         <div>
