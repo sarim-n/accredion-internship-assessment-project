@@ -3,12 +3,10 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Menu, X, ArrowRight } from 'lucide-react';
 import { siteConfig } from '@/config/site';
-import { useLeadModal } from '@/context/modal-context';
 
 export const Navbar: React.FC = () => {
   const [activeSection, setActiveSection] = useState('home');
   const [isMobileOpen, setIsMobileOpen] = useState(false);
-  const { openLeadModal } = useLeadModal();
 
   useEffect(() => {
     // Cache section offsets — only recompute on resize, not on every scroll tick.
@@ -123,14 +121,15 @@ export const Navbar: React.FC = () => {
             })}
           </nav>
 
-          {/* Primary Action CTA Button - Aligned Right */}
-          <button
-            onClick={() => openLeadModal('Navbar Get Proposal')}
+          {/* Primary Action CTA Button - Smooth Scrolls to #lead-capture-section */}
+          <a
+            href="#lead-capture-section"
+            onClick={(e) => handleNavClick(e, '#lead-capture-section')}
             className="ml-2 px-4.5 py-2 bg-[#1D61E7] hover:bg-[#154ec2] active:scale-[0.99] text-white font-bold text-xs xl:text-sm rounded-xl shadow-sm hover:shadow-md transition-all cursor-pointer flex items-center gap-1.5 whitespace-nowrap"
           >
             <span>Get Proposal</span>
             <ArrowRight className="w-3.5 h-3.5" />
-          </button>
+          </a>
         </div>
 
         {/* Mobile Menu Toggle Button */}
@@ -172,16 +171,14 @@ export const Navbar: React.FC = () => {
           })}
 
           <div className="pt-2">
-            <button
-              onClick={() => {
-                setIsMobileOpen(false);
-                openLeadModal('Mobile Nav Get Proposal');
-              }}
+            <a
+              href="#lead-capture-section"
+              onClick={(e) => handleNavClick(e, '#lead-capture-section')}
               className="w-full py-3 bg-[#1D61E7] hover:bg-[#154ec2] text-white font-bold text-sm rounded-xl shadow-md flex items-center justify-center gap-2"
             >
               <span>Get Proposal</span>
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </a>
           </div>
         </div>
       )}
