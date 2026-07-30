@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { LeadCaptureForm } from '@/components/forms/lead-capture-form';
 import { 
   Sparkles, 
@@ -44,79 +45,93 @@ export const LeadCaptureSection: React.FC = () => {
         {/* Main Content Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
           
-          {/* Left Column: Value Highlights & Trust Features */}
+          {/* Left Column: Corporate Office Image Banner & Value Highlights */}
           <div className="lg:col-span-5 space-y-6">
             
-            {/* Main Value Banner Card */}
-            <div className="p-6 sm:p-8 rounded-3xl bg-white/90 backdrop-blur-md border border-blue-100/90 shadow-[0_10px_30px_rgba(29,97,231,0.06)] space-y-6">
-              <h3 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-                <Building className="w-5 h-5 text-[#1D61E7]" />
+            {/* Corporate Office Image Banner */}
+            <div className="relative w-full h-[200px] sm:h-[230px] rounded-3xl overflow-hidden shadow-lg border border-blue-100/90 group">
+              <Image
+                src="/enquire-now-bg.png"
+                alt="Accredian Modern Corporate Enterprise Office"
+                fill
+                sizes="(max-width: 1024px) 100vw, 420px"
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                priority
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/30 to-transparent p-6 flex flex-col justify-between">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-white text-xs font-semibold self-start border border-white/30">
+                  <Sparkles className="w-3.5 h-3.5 text-amber-300" />
+                  <span>Accredian Corporate Hub</span>
+                </span>
+                <div className="space-y-1 text-white">
+                  <h4 className="text-lg font-bold text-white leading-snug">
+                    State-of-the-Art Enterprise Upskilling
+                  </h4>
+                  <p className="text-xs text-blue-100">
+                    Trusted by 100+ global enterprises across 15+ countries.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Main Value Features List */}
+            <div className="p-6 sm:p-7 rounded-3xl bg-white/90 backdrop-blur-md border border-blue-100/90 shadow-[0_10px_30px_rgba(29,97,231,0.06)] space-y-4">
+              <h3 className="text-base font-bold text-slate-900 flex items-center gap-2">
+                <Building className="w-4.5 h-4.5 text-[#1D61E7]" />
                 Why Leading Enterprises Choose Accredian
               </h3>
 
-              <div className="space-y-4">
-                <div className="flex items-start gap-3.5">
-                  <div className="w-8 h-8 rounded-xl bg-blue-50 flex items-center justify-center text-[#1D61E7] shrink-0 mt-0.5 border border-blue-100">
-                    <Zap className="w-4 h-4" />
+              <div className="space-y-3.5">
+                <div className="flex items-start gap-3">
+                  <div className="w-7 h-7 rounded-lg bg-blue-50 flex items-center justify-center text-[#1D61E7] shrink-0 mt-0.5 border border-blue-100">
+                    <Zap className="w-3.5 h-3.5" />
                   </div>
                   <div>
-                    <h4 className="text-sm font-bold text-slate-900">24-Hour Custom Proposal</h4>
-                    <p className="text-xs text-slate-600 leading-relaxed mt-0.5">
-                      Receive tailored cohort curriculum, milestone schedules, and transparent corporate pricing within one business day.
+                    <h4 className="text-xs font-bold text-slate-900">24-Hour Custom Proposal</h4>
+                    <p className="text-[11px] text-slate-600 leading-normal mt-0.5">
+                      Tailored cohort curriculum & transparent corporate pricing within 1 business day.
                     </p>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-3.5">
-                  <div className="w-8 h-8 rounded-xl bg-blue-50 flex items-center justify-center text-[#1D61E7] shrink-0 mt-0.5 border border-blue-100">
-                    <GraduationCap className="w-4 h-4" />
+                <div className="flex items-start gap-3">
+                  <div className="w-7 h-7 rounded-lg bg-blue-50 flex items-center justify-center text-[#1D61E7] shrink-0 mt-0.5 border border-blue-100">
+                    <GraduationCap className="w-3.5 h-3.5" />
                   </div>
                   <div>
-                    <h4 className="text-sm font-bold text-slate-900">Global University Credentials</h4>
-                    <p className="text-xs text-slate-600 leading-relaxed mt-0.5">
-                      Co-certified certifications backed by premier academic institutions & industry experts.
+                    <h4 className="text-xs font-bold text-slate-900">Global University Credentials</h4>
+                    <p className="text-[11px] text-slate-600 leading-normal mt-0.5">
+                      Co-branded certifications backed by premier academic institutions.
                     </p>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-3.5">
-                  <div className="w-8 h-8 rounded-xl bg-blue-50 flex items-center justify-center text-[#1D61E7] shrink-0 mt-0.5 border border-blue-100">
-                    <Users2 className="w-4 h-4" />
+                <div className="flex items-start gap-3">
+                  <div className="w-7 h-7 rounded-lg bg-blue-50 flex items-center justify-center text-[#1D61E7] shrink-0 mt-0.5 border border-blue-100">
+                    <ShieldCheck className="w-3.5 h-3.5" />
                   </div>
                   <div>
-                    <h4 className="text-sm font-bold text-slate-900">Pre & Post Skill Benchmarking</h4>
-                    <p className="text-xs text-slate-600 leading-relaxed mt-0.5">
-                      Measure employee proficiency gains with real-world capstone projects and baseline assessment diagnostics.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3.5">
-                  <div className="w-8 h-8 rounded-xl bg-blue-50 flex items-center justify-center text-[#1D61E7] shrink-0 mt-0.5 border border-blue-100">
-                    <ShieldCheck className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <h4 className="text-sm font-bold text-slate-900">Enterprise NDA & Data Privacy</h4>
-                    <p className="text-xs text-slate-600 leading-relaxed mt-0.5">
-                      Strict compliance with corporate security protocols, custom LMS integrations, and data protection.
+                    <h4 className="text-xs font-bold text-slate-900">Enterprise NDA & Data Privacy</h4>
+                    <p className="text-[11px] text-slate-600 leading-normal mt-0.5">
+                      Strict compliance with corporate security protocols and data protection.
                     </p>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Micro Social Proof Bar */}
-            <div className="p-4 rounded-2xl bg-gradient-to-r from-[#1D61E7] to-indigo-600 text-white flex items-center justify-between shadow-lg shadow-blue-500/20">
-              <div className="flex items-center gap-3">
-                <Award className="w-6 h-6 text-amber-300 shrink-0" />
+            {/* Micro Rating Bar */}
+            <div className="p-3.5 rounded-2xl bg-gradient-to-r from-[#1D61E7] to-indigo-600 text-white flex items-center justify-between shadow-md">
+              <div className="flex items-center gap-2.5">
+                <Award className="w-5 h-5 text-amber-300 shrink-0" />
                 <div>
-                  <p className="text-xs font-semibold text-blue-100 uppercase tracking-wider">Enterprise Rating</p>
-                  <p className="text-sm font-bold">4.9/5 Across 100+ Cohorts</p>
+                  <p className="text-[10px] font-semibold text-blue-100 uppercase tracking-wider">Enterprise Rating</p>
+                  <p className="text-xs font-bold">4.9/5 Across 100+ Cohorts</p>
                 </div>
               </div>
-              <div className="hidden sm:flex items-center gap-1 text-xs font-medium bg-white/15 px-3 py-1.5 rounded-full backdrop-blur-xs">
+              <div className="hidden sm:flex items-center gap-1 text-[11px] font-medium bg-white/15 px-2.5 py-1 rounded-full">
                 <CheckCircle className="w-3.5 h-3.5 text-emerald-300" />
-                <span>Verified Partners</span>
+                <span>Verified</span>
               </div>
             </div>
 
