@@ -21,7 +21,7 @@ export const WhoShouldJoinSection = () => {
                 </h2>
               </div>
 
-              {/* Strategic Skill Blended Illustration */}
+              {/* Strategic Skill Transparent Vector Illustration */}
               <div className="pt-2 flex justify-start">
                 <div className="w-full max-w-sm h-[210px] sm:h-[240px] relative flex items-center justify-center">
                   <Image
@@ -29,7 +29,7 @@ export const WhoShouldJoinSection = () => {
                     alt="Strategic Skill Enhancement Team"
                     fill
                     sizes="(max-width: 640px) 100vw, 380px"
-                    className="object-contain mix-blend-multiply contrast-[1.08] brightness-[1.03]"
+                    className="object-contain drop-shadow-md"
                     priority
                   />
                 </div>
