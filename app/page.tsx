@@ -9,6 +9,7 @@ import { CATFrameworkSection } from '@/components/sections/cat-framework-section
 import { HowItWorksSection } from '@/components/sections/how-it-works-section';
 import { FAQsSection } from '@/components/sections/faqs-section';
 import { TestimonialsSection } from '@/components/sections/testimonials-section';
+import { LeadCaptureSection } from '@/components/sections/lead-capture-section';
 import { PreFooterCTA } from '@/components/sections/pre-footer-cta';
 
 export default function Home() {
@@ -25,6 +26,7 @@ export default function Home() {
       <HowItWorksSection />
       <FAQsSection />
       <TestimonialsSection />
+      <LeadCaptureSection />
       <PreFooterCTA />
     </div>
   );

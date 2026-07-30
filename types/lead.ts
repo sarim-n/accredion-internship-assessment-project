@@ -3,7 +3,7 @@ export interface LeadFormData {
   corporateEmail: string;
   phone: string;
   companyName: string;
-  jobTitle: string;
+  jobTitle?: string;
   teamSize: string;
   trainingDomain: string;
   additionalNotes?: string;

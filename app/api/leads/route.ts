@@ -1,17 +1,42 @@
 import { NextResponse } from 'next/server';
 import { LeadFormData, LeadApiResponse } from '@/types/lead';
+import { getStoredLeads, saveLead } from '@/lib/leads-store';
 
+// GET Handler to list captured leads
+export async function GET() {
+  try {
+    const leads = getStoredLeads();
+    return NextResponse.json({
+      success: true,
+      total: leads.length,
+      leads,
+    });
+  } catch (error) {
+    console.error('API GET /api/leads Error:', error);
+    return NextResponse.json(
+      { success: false, message: 'Failed to retrieve stored leads.' },
+      { status: 500 }
+    );
+  }
+}
+
+// POST Handler to submit & persist new enterprise leads
 export async function POST(request: Request) {
   try {
-    const body: LeadFormData = await request.json();
+    const body: LeadFormData & {
+      deliveryMode?: string;
+      location?: string;
+      candidates?: string;
+    } = await request.json();
 
     const errors: Record<string, string> = {};
 
-    // Validate required fields
+    // Validate Full Name
     if (!body.fullName || body.fullName.trim().length < 2) {
       errors.fullName = 'Please enter your full name.';
     }
 
+    // Validate Email
     if (!body.corporateEmail || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(body.corporateEmail)) {
       errors.corporateEmail = 'Please enter a valid corporate email address.';
     } else if (
@@ -19,22 +44,25 @@ export async function POST(request: Request) {
       body.corporateEmail.endsWith('@yahoo.com') ||
       body.corporateEmail.endsWith('@hotmail.com')
     ) {
-      // Encourage corporate business email
       errors.corporateEmail = 'Please use your corporate work email address.';
     }
 
+    // Validate Phone
     if (!body.phone || body.phone.trim().length < 8) {
       errors.phone = 'Please enter a valid phone number.';
     }
 
+    // Validate Company Name
     if (!body.companyName || body.companyName.trim().length < 2) {
-      errors.companyName = 'Please enter your company/organization name.';
+      errors.companyName = 'Please enter your company or organization name.';
     }
 
+    // Validate Team Size
     if (!body.teamSize) {
-      errors.teamSize = 'Please select your estimated team size.';
+      errors.teamSize = 'Please select your estimated team size or candidates count.';
     }
 
+    // Validate Training Domain
     if (!body.trainingDomain) {
       errors.trainingDomain = 'Please select a primary training domain.';
     }
@@ -51,18 +79,25 @@ export async function POST(request: Request) {
       );
     }
 
-    // Simulate database delay
-    await new Promise((resolve) => setTimeout(resolve, 600));
+    // Save lead to persistent storage
+    const savedLead = saveLead({
+      fullName: body.fullName.trim(),
+      corporateEmail: body.corporateEmail.trim().toLowerCase(),
+      phone: body.phone.trim(),
+      companyName: body.companyName.trim(),
+      teamSize: body.teamSize,
+      trainingDomain: body.trainingDomain,
+      deliveryMode: body.deliveryMode,
+      location: body.location,
+      candidates: body.candidates,
+    });
 
-    // Generate unique Lead ID
-    const leadId = `ACC-ENT-${Math.floor(100000 + Math.random() * 900000)}`;
-
-    console.log(`[Lead Captured Successfully]: ID=${leadId}`, body);
+    console.log(`[Lead Captured & Stored]: ID=${savedLead.id}`, savedLead);
 
     return NextResponse.json<LeadApiResponse>({
       success: true,
-      message: 'Thank you! Your enterprise inquiry has been submitted. Our team will contact you within 24 hours.',
-      leadId,
+      message: 'Thank you! Your enterprise inquiry has been registered. Our corporate advisor will reach out within 24 hours.',
+      leadId: savedLead.id,
     });
   } catch (error) {
     console.error('Lead Capture API Error:', error);
