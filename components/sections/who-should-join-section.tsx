@@ -10,7 +10,7 @@ export const WhoShouldJoinSection = () => {
         {/* Main Solid Blue Container */}
         <div className="bg-[#1D61E7] rounded-3xl p-6 sm:p-8 lg:p-10 text-white shadow-lg shadow-blue-600/15 relative overflow-hidden">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center">
-            {/* Left Content & People Graphic (5 cols) */}
+            {/* Left Content & Strategic Skill Illustration (5 cols) */}
             <div className="lg:col-span-5 space-y-4 flex flex-col justify-between h-full">
               <div className="space-y-1.5">
                 <span className="text-blue-100 font-semibold text-base block">
@@ -21,15 +21,16 @@ export const WhoShouldJoinSection = () => {
                 </h2>
               </div>
 
-              {/* Corporate Team Graphic Image */}
+              {/* Strategic Skill Blended Illustration */}
               <div className="pt-2 flex justify-start">
-                <div className="w-full max-w-xs h-[190px] sm:h-[210px] rounded-xl border border-white/30 shadow-md relative overflow-hidden">
+                <div className="w-full max-w-sm h-[210px] sm:h-[240px] relative flex items-center justify-center">
                   <Image
-                    src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&auto=format&fit=crop&q=80"
-                    alt="Who Should Join Executives"
+                    src="/strategic-skills.png"
+                    alt="Strategic Skill Enhancement Team"
                     fill
-                    sizes="(max-width: 640px) 100vw, 320px"
-                    className="object-cover"
+                    sizes="(max-width: 640px) 100vw, 380px"
+                    className="object-contain mix-blend-multiply contrast-[1.08] brightness-[1.03]"
+                    priority
                   />
                 </div>
               </div>
