@@ -23,6 +23,10 @@
 # misc
 .DS_Store
 *.pem
+Copy of Full Stack Developer Intern tasks.docx
+*.log
+.gemini/
+.vercel
 
 # debug
 npm-debug.log*
@@ -30,11 +34,9 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
+# env files
 .env*
-
-# vercel
-.vercel
+!.env.example
 
 # typescript
 *.tsbuildinfo
